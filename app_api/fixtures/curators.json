@@ -1,0 +1,9 @@
+[
+    {
+        "model": "app_api.curator",
+        "pk": 1,
+        "fields": {
+            "user": 1
+        }
+    }
+]
