@@ -19,10 +19,11 @@ from rest_framework import routers
 from django.urls import path
 from django.conf.urls import include
 from django.conf.urls.static import static
-from app_api.views import register_user, login_user, ArtistView
+from app_api.views import register_user, login_user, ArtistView, UserView
 
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'artists', ArtistView, 'artist')
+router.register(r'users', UserView, 'user')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
