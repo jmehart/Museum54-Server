@@ -1,0 +1,30 @@
+[
+    {
+        "model": "app_api.artist",
+        "pk": 1,
+        "fields": {
+            "name": "Randall Thomas",
+            "birth": "1988",
+            "death": "",
+            "bio": "A master of emojis and friendship for everyone.",
+            "nationality": "American",
+            "dateEntered": "2022-01-15T20:00:42.874Z",
+            "curator": 1,
+            "image": "https://i.pinimg.com/originals/3f/94/70/3f9470b34a8e3f526dbdb022f9f19cf7.jpg"
+        }
+    },
+    {
+        "model": "app_api.artist",
+        "pk": 2,
+        "fields": {
+            "name": "Jaimie Hart",
+            "birth": "1994",
+            "death": "",
+            "bio": "Personal photographer for Stevie Nicks",
+            "nationality": "American",
+            "dateEntered": "2022-04-15T20:00:42.874Z",
+            "curator": 1,
+            "image": "https://i.pinimg.com/originals/3f/94/70/3f9470b34a8e3f526dbdb022f9f19cf7.jpg"
+        }
+    }
+]
