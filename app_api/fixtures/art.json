@@ -1,0 +1,46 @@
+[
+    {
+        "model": "app_api.art",
+        "pk": 1,
+        "fields": {
+            "title": "Steve",
+            "artistId": 1,
+            "description": "Steve in the fires of Mordor while watching you try to map through an object. A think piece.",
+            "dateMade": "March 2022",
+            "dateAcquired": "June 2022",
+            "dateEntered": "2022-06-08T20:00:42.874Z",
+            "curator": 1,
+            "location": "Los Angeles, CA",
+            "dimensions": "8.5 x 11",
+            "classificationId": 1,
+            "styleId": 1,
+            "genreId": 1,
+            "mediumId": 1,
+            "framed": 0,
+            "signature": 0,
+            "image": "https://i.pinimg.com/originals/3f/94/70/3f9470b34a8e3f526dbdb022f9f19cf7.jpg"
+        }
+    },
+    {
+        "model": "app_api.art",
+        "pk": 2,
+        "fields": {
+            "title": "Disapproving Mac",
+            "artistId": 1,
+            "description": "An ancient symbol of wisdom.",
+            "dateMade": "April 2022",
+            "dateAcquired": "June 2022",
+            "dateEntered": "2022-06-08T20:00:42.874Z",
+            "curator": 1,
+            "location": "Los Angeles, CA",
+            "dimensions": "8.5 x 11",
+            "classificationId": 1,
+            "styleId": 1,
+            "genreId": 1,
+            "mediumId": 1,
+            "framed": 0,
+            "signature": 0,
+            "image": "https://i.pinimg.com/originals/3f/94/70/3f9470b34a8e3f526dbdb022f9f19cf7.jpg"
+        }
+    }
+]

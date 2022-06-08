@@ -1,0 +1,16 @@
+[
+    {
+        "model": "app_api.style",
+        "pk": 1,
+        "fields": {
+            "type": "Steve"
+        }
+    },
+    {
+        "model": "app_api.style",
+        "pk": 2,
+        "fields": {
+            "type": "Disapproving Mac"
+        }
+    }
+]
