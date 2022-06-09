@@ -3,182 +3,98 @@
         "model": "app_api.genre",
         "pk": 1,
         "fields": {
-            "type": "Northern Renaissance"
+            "type": "Portrait"
         }
     },
     {
         "model": "app_api.genre",
         "pk": 2,
         "fields": {
-            "type": "Impressionism"
+            "type": "Landscape"
         }
     },
     {
         "model": "app_api.genre",
         "pk": 3,
         "fields": {
-            "type": "Post-Impressionism"
+            "type": "Genre Painting"
         }
     },
     {
         "model": "app_api.genre",
         "pk": 4,
         "fields": {
-            "type": "Realism"
+            "type": "Abstract"
         }
     },
     {
         "model": "app_api.genre",
         "pk": 5,
         "fields": {
-            "type": "Romanticism"
+            "type": "Religious Painting"
         }
     },
     {
         "model": "app_api.genre",
         "pk": 6,
         "fields": {
-            "type": "Baroque"
+            "type": "Cityscape"
         }
     },
     {
         "model": "app_api.genre",
         "pk": 7,
         "fields": {
-            "type": "Symbolism"
+            "type": "Sketch & Study"
         }
     },
     {
         "model": "app_api.genre",
         "pk": 8,
         "fields": {
-            "type": "Expressionism"
+            "type": "Figurative"
         }
     },
     {
         "model": "app_api.genre",
         "pk": 9,
         "fields": {
-            "type": "Art Nouveau"
+            "type": "Illustration"
         }
     },
     {
         "model": "app_api.genre",
         "pk": 10,
         "fields": {
-            "type": "Socialist Realism"
+            "type": "Still Life"
         }
     },
     {
         "model": "app_api.genre",
         "pk": 11,
         "fields": {
-            "type": "Cubism"
+            "type": "Geometric"
         }
     },
     {
         "model": "app_api.genre",
         "pk": 12,
         "fields": {
-            "type": "High Renaissance"
+            "type": "Minimalist"
         }
     },
     {
         "model": "app_api.genre",
         "pk": 13,
         "fields": {
-            "type": "Primitivism"
+            "type": "Nature"
         }
     },
     {
         "model": "app_api.genre",
         "pk": 14,
         "fields": {
-            "type": "Early Renaissance"
-        }
-    },
-    {
-        "model": "app_api.genre",
-        "pk": 15,
-        "fields": {
-            "type": "Surrealism"
-        }
-    },
-    {
-        "model": "app_api.genre",
-        "pk": 16,
-        "fields": {
-            "type": "Pop Art"
-        }
-    },
-    {
-        "model": "app_api.genre",
-        "pk": 17,
-        "fields": {
-            "type": "Iconography"
-        }
-    },
-    {
-        "model": "app_api.genre",
-        "pk": 18,
-        "fields": {
-            "type": "Academic Art"
-        }
-    },
-    {
-        "model": "app_api.genre",
-        "pk": 19,
-        "fields": {
-            "type": "Suprematism"
-        }
-    },
-    {
-        "model": "app_api.genre",
-        "pk": 20,
-        "fields": {
-            "type": "Proto Renaissance"
-        }
-    },
-    {
-        "model": "app_api.genre",
-        "pk": 21,
-        "fields": {
-            "type": "Byzantine Art"
-        }
-    },
-    {
-        "model": "app_api.genre",
-        "pk": 22,
-        "fields": {
-            "type": "Rococo"
-        }
-    },
-    {
-        "model": "app_api.genre",
-        "pk": 23,
-        "fields": {
-            "type": "Mannerism"
-        }
-    },
-    {
-        "model": "app_api.genre",
-        "pk": 24,
-        "fields": {
-            "type": "Neoplasticism"
-        }
-    },
-    {
-        "model": "app_api.genre",
-        "pk": 25,
-        "fields": {
-            "type": "Analytical Realism"
-        }
-    },
-    {
-        "model": "app_api.genre",
-        "pk": 26,
-        "fields": {
-            "type": "Abstract Expressionism"
+            "type": "Pop"
         }
     }
 ]

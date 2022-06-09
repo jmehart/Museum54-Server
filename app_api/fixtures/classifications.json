@@ -3,14 +3,35 @@
         "model": "app_api.classification",
         "pk": 1,
         "fields": {
-            "type": "Steve"
+            "type": "Fine Art"
         }
     },
     {
         "model": "app_api.classification",
         "pk": 2,
         "fields": {
-            "type": "Disapproving Mac"
+            "type": "Visual Art"
+        }
+    },
+    {
+        "model": "app_api.classification",
+        "pk": 3,
+        "fields": {
+            "type": "Decorative Art"
+        }
+    },
+    {
+        "model": "app_api.classification",
+        "pk": 4,
+        "fields": {
+            "type": "Applied Art"
+        }
+    },
+    {
+        "model": "app_api.classification",
+        "pk": 5,
+        "fields": {
+            "type": "Craft"
         }
     }
 ]

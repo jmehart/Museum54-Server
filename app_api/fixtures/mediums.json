@@ -3,14 +3,211 @@
         "model": "app_api.medium",
         "pk": 1,
         "fields": {
-            "type": "Steve"
+            "type": "Painting: Tempura"
         }
     },
     {
         "model": "app_api.medium",
         "pk": 2,
         "fields": {
-            "type": "Disapproving Mac"
+            "type": "Painting: Oil"
+        }
+    },
+    {
+        "model": "app_api.medium",
+        "pk": 3,
+        "fields": {
+            "type": "Painting: Acrylic"
+        }
+    },
+    {
+        "model": "app_api.medium",
+        "pk": 4,
+        "fields": {
+            "type": "Painting: Watercolor"
+        }
+    },
+    {
+        "model": "app_api.medium",
+        "pk": 5,
+        "fields": {
+            "type": "Drawing: Charcoal"
+        }
+    },
+    {
+        "model": "app_api.medium",
+        "pk": 6,
+        "fields": {
+            "type": "Drawing: Pastel"
+        }
+    },
+    {
+        "model": "app_api.medium",
+        "pk": 7,
+        "fields": {
+            "type": "Drawing: Chalk"
+        }
+    },
+    {
+        "model": "app_api.medium",
+        "pk": 8,
+        "fields": {
+            "type": "Drawing: Graphite Pencil"
+        }
+    },
+    {
+        "model": "app_api.medium",
+        "pk": 9,
+        "fields": {
+            "type": "Drawing: Color Pencil"
+        }
+    },
+    {
+        "model": "app_api.medium",
+        "pk": 10,
+        "fields": {
+            "type": "Drawing: Pen and Ink"
+        }
+    },
+    {
+        "model": "app_api.medium",
+        "pk": 11,
+        "fields": {
+            "type": "Three-Dimensional Sculpture: Stone Carving"
+        }
+    },
+    {
+        "model": "app_api.medium",
+        "pk": 12,
+        "fields": {
+            "type": "Three-Dimensional Sculpture: Wood Carving"
+        }
+    },
+    {
+        "model": "app_api.medium",
+        "pk": 13,
+        "fields": {
+            "type": "Three-Dimensional Sculpture: Casting"
+        }
+    },
+    {
+        "model": "app_api.medium",
+        "pk": 14,
+        "fields": {
+            "type": "Three-Dimensional Sculpture: Modeling"
+        }
+    },
+    {
+        "model": "app_api.medium",
+        "pk": 15,
+        "fields": {
+            "type": "Three-Dimensional Sculpture: Construction"
+        }
+    },
+    {
+        "model": "app_api.medium",
+        "pk": 16,
+        "fields": {
+            "type": "Mixed Media: Collage"
+        }
+    },
+    {
+        "model": "app_api.medium",
+        "pk": 17,
+        "fields": {
+            "type": "Mixed Media: Assemblage"
+        }
+    },
+    {
+        "model": "app_api.medium",
+        "pk": 18,
+        "fields": {
+            "type": "Mixed Media: Found Object"
+        }
+    },
+    {
+        "model": "app_api.medium",
+        "pk": 19,
+        "fields": {
+            "type": "Mixed Media: Art Journaling"
+        }
+    },
+    {
+        "model": "app_api.medium",
+        "pk": 20,
+        "fields": {
+            "type": "Photography: Documentary"
+        }
+    },
+    {
+        "model": "app_api.medium",
+        "pk": 21,
+        "fields": {
+            "type": "Photography: Landscape"
+        }
+    },
+    {
+        "model": "app_api.medium",
+        "pk": 22,
+        "fields": {
+            "type": "Photography: Portrait"
+        }
+    },
+    {
+        "model": "app_api.medium",
+        "pk": 23,
+        "fields": {
+            "type": "Photography: Nude"
+        }
+    },
+    {
+        "model": "app_api.medium",
+        "pk": 24,
+        "fields": {
+            "type": "Photography: Digital"
+        }
+    },
+    {
+        "model": "app_api.medium",
+        "pk": 25,
+        "fields": {
+            "type": "Photography: Video"
+        }
+    }
+    ,
+    {
+        "model": "app_api.medium",
+        "pk": 26,
+        "fields": {
+            "type": "Canvas"
+        }
+    },
+    {
+        "model": "app_api.medium",
+        "pk": 27,
+        "fields": {
+            "type": "Paper"
+        }
+    },
+    {
+        "model": "app_api.medium",
+        "pk": 28,
+        "fields": {
+            "type": "Panel"
+        }
+    },
+    {
+        "model": "app_api.medium",
+        "pk": 29,
+        "fields": {
+            "type": "Wood"
+        }
+    },
+    {
+        "model": "app_api.medium",
+        "pk": 30,
+        "fields": {
+            "type": "Digital Media"
         }
     }
 ]

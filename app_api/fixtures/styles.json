@@ -3,14 +3,217 @@
         "model": "app_api.style",
         "pk": 1,
         "fields": {
-            "type": "Steve"
+            "type": "Northern Renaissance"
         }
     },
     {
         "model": "app_api.style",
         "pk": 2,
         "fields": {
-            "type": "Disapproving Mac"
+            "type": "Impressionism"
+        }
+    },
+    {
+        "model": "app_api.style",
+        "pk": 3,
+        "fields": {
+            "type": "Post-Impressionism"
+        }
+    },
+    {
+        "model": "app_api.style",
+        "pk": 4,
+        "fields": {
+            "type": "Realism"
+        }
+    },
+    {
+        "model": "app_api.style",
+        "pk": 5,
+        "fields": {
+            "type": "Romanticism"
+        }
+    },
+    {
+        "model": "app_api.style",
+        "pk": 6,
+        "fields": {
+            "type": "Baroque"
+        }
+    },
+    {
+        "model": "app_api.style",
+        "pk": 7,
+        "fields": {
+            "type": "Symbolism"
+        }
+    },
+    {
+        "model": "app_api.style",
+        "pk": 8,
+        "fields": {
+            "type": "Expressionism"
+        }
+    },
+    {
+        "model": "app_api.style",
+        "pk": 9,
+        "fields": {
+            "type": "Art Nouveau"
+        }
+    },
+    {
+        "model": "app_api.style",
+        "pk": 10,
+        "fields": {
+            "type": "Socialist Realism"
+        }
+    },
+    {
+        "model": "app_api.style",
+        "pk": 11,
+        "fields": {
+            "type": "Cubism"
+        }
+    },
+    {
+        "model": "app_api.style",
+        "pk": 12,
+        "fields": {
+            "type": "High Renaissance"
+        }
+    },
+    {
+        "model": "app_api.style",
+        "pk": 13,
+        "fields": {
+            "type": "Primitivism"
+        }
+    },
+    {
+        "model": "app_api.style",
+        "pk": 14,
+        "fields": {
+            "type": "Early Renaissance"
+        }
+    },
+    {
+        "model": "app_api.style",
+        "pk": 15,
+        "fields": {
+            "type": "Surrealism"
+        }
+    },
+    {
+        "model": "app_api.style",
+        "pk": 16,
+        "fields": {
+            "type": "Pop Art"
+        }
+    },
+    {
+        "model": "app_api.style",
+        "pk": 17,
+        "fields": {
+            "type": "Iconography"
+        }
+    },
+    {
+        "model": "app_api.style",
+        "pk": 18,
+        "fields": {
+            "type": "Academic Art"
+        }
+    },
+    {
+        "model": "app_api.style",
+        "pk": 19,
+        "fields": {
+            "type": "Suprematism"
+        }
+    },
+    {
+        "model": "app_api.style",
+        "pk": 20,
+        "fields": {
+            "type": "Proto Renaissance"
+        }
+    },
+    {
+        "model": "app_api.style",
+        "pk": 21,
+        "fields": {
+            "type": "Byzantine Art"
+        }
+    },
+    {
+        "model": "app_api.style",
+        "pk": 22,
+        "fields": {
+            "type": "Rococo"
+        }
+    },
+    {
+        "model": "app_api.style",
+        "pk": 23,
+        "fields": {
+            "type": "Mannerism"
+        }
+    },
+    {
+        "model": "app_api.style",
+        "pk": 24,
+        "fields": {
+            "type": "Neoplasticism"
+        }
+    },
+    {
+        "model": "app_api.style",
+        "pk": 25,
+        "fields": {
+            "type": "Analytical Realism"
+        }
+    },
+    {
+        "model": "app_api.style",
+        "pk": 26,
+        "fields": {
+            "type": "Abstract Expressionism"
+        }
+    },
+    {
+        "model": "app_api.style",
+        "pk": 27,
+        "fields": {
+            "type": "Folk Art"
+        }
+    },
+    {
+        "model": "app_api.style",
+        "pk": 28,
+        "fields": {
+            "type": "Fauvism"
+        }
+    },
+    {
+        "model": "app_api.style",
+        "pk": 29,
+        "fields": {
+            "type": "Dada"
+        }
+    },
+    {
+        "model": "app_api.style",
+        "pk": 30,
+        "fields": {
+            "type": "Futurism"
+        }
+    },
+    {
+        "model": "app_api.style",
+        "pk": 31,
+        "fields": {
+            "type": "Bauhaus"
         }
     }
 ]
