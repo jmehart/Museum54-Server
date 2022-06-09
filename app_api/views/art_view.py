@@ -10,32 +10,32 @@ from rest_framework.response import Response
 from rest_framework import serializers
 from datetime import datetime
 from rest_framework.decorators import action
-from app_api.models import Art, Curator
+from app_api.models import Art, Curator, Artist
 
 class ArtView(ViewSet):
     
     def list(self, request):
 
         user_id = self.request.query_params.get("user_id", None)
-        artistId = self.request.query_params.get("artistId", None)
+        artist = self.request.query_params.get("artist", None)
         classification = self.request.query_params.get("classification", None)
         title = self.request.query_params.get("title", None)
         
 
         if user_id != None: 
-            artwork = Art.objects.filter(Q(curator = user_id)).order_by('-title')
-        elif artistId != None:
-            artwork = Art.objects.filter(Q(artistId = artistId)).order_by('-title')
+            art = Art.objects.filter(Q(curator = user_id)).order_by('-title')
+        elif artist != None:
+            art = Art.objects.filter(Q(artist = artist)).order_by('-title')
         elif classification != None:
-            artwork = Art.objects.filter(Q(classifications = classification)).order_by('-title')
+            art = Art.objects.filter(Q(classification = classification)).order_by('-title')
         elif title != None:
-            artwork = Art.objects.filter(Q(title__contains = title)).order_by('-title')
+            art = Art.objects.filter(Q(title__contains = title)).order_by('-title')
         else:   
-            artwork = Art.objects.all().order_by('title')
+            art = Art.objects.all().order_by('title')
 
         
         serializer = ArtSerializer(
-            artwork, many=True, context={'request': request})
+            art, many=True, context={'request': request})
         return Response(serializer.data)
     
     
@@ -55,43 +55,45 @@ class ArtView(ViewSet):
         
         
         
-    def create(self, request):
+    # def create(self, request):
 
-        user = Curator.objects.get(user=request.auth.user)
+    #     user = Curator.objects.get(user=request.auth.user)
+    #     artist = Artist.objects.get(pk=request.data["artist"])
 
-        art = Art()
-        art.curator = user
-        art.title = request.data["title"]
-        art.content = request.data["content"]
-        art.image_url = request.data["image_url"]
-        art.approved = request.data["approved"]
+    #     art = Art()
+    #     art.curator = user
+    #     art.title = request.data["title"]
+    #     art.artist = artist
+    #     art.content = request.data["content"]
+    #     art.image_url = request.data["image_url"]
+    #     art.approved = request.data["approved"]
         
 
-        try:
-            art.save()
-            art.classifications.add(*request.data['classifications'])
-            serializer = ArtSerializer(art, context={'request': request})
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        except ValidationError as ex:
-            return Response({'reason': ex.message}, status=status.HTTP_400_BAD_REQUEST)   
+    #     try:
+    #         art.save()
+    #         art.classifications.add(*request.data['classifications'])
+    #         serializer = ArtSerializer(art, context={'request': request})
+    #         return Response(serializer.data, status=status.HTTP_201_CREATED)
+    #     except ValidationError as ex:
+    #         return Response({'reason': ex.message}, status=status.HTTP_400_BAD_REQUEST)   
         
         
-    def update(self, request, pk=None):
+    # def update(self, request, pk=None):
 
         
-        category = Category.objects.get(pk=request.data["category"])
+    #     artist = Artist.objects.get(pk=request.data["artist"])
 
-        art = Art.objects.get(pk=pk)
-        # art.curator = request.data['curator']
-        art.title = request.data["title"]
-        art.content = request.data["content"]
-        art.category = category
-        art.image_url = request.data["image_url"]
-        art.approved = request.data["approved"]
-        art.save()
-        art.classifications.add(*request.data['classifications'])
+    #     art = Art.objects.get(pk=pk)
+    #     # art.curator = request.data['curator']
+    #     art.title = request.data["title"]
+    #     art.content = request.data["content"]
+    #     art.artist = artist
+    #     art.image_url = request.data["image_url"]
+    #     art.approved = request.data["approved"]
+    #     art.save()
+    #     art.classifications.add(*request.data['classifications'])
 
-        return Response({}, status=status.HTTP_204_NO_CONTENT)     
+    #     return Response({}, status=status.HTTP_204_NO_CONTENT)     
         
         
     @action(methods=['put'], detail=True)
@@ -113,10 +115,10 @@ class ArtView(ViewSet):
         classification = request.data['classification_id']
         
         if request.method == "POST":
-            art.classifications.add(classification)
+            art.classification.add(classification)
             response_message = Response({'message': 'Classification added'}, status=status.HTTP_201_CREATED)
         elif request.method == 'DELETE':
-            art.classifications.remove(classification)
+            art.classification.remove(classification)
             response_message = Response({'message': 'Classification deleted'}, status=status.HTTP_204_NO_CONTENT)
         
         return response_message
@@ -131,34 +133,27 @@ class ArtUserSerializer(serializers.ModelSerializer):
 class ArtCuratorSerializer(serializers.ModelSerializer):
 
     user = ArtUserSerializer(many=False)
+    
     class Meta:
         model = Curator
         fields = ['id', 'user']
         
 
-class CategorySerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = Category
-        fields = ('id', 'label')    
-        
-        
-class CommentSerializer(serializers.ModelSerializer):
-
+class ArtistSerializer(serializers.ModelSerializer):
+    
     curator = ArtCuratorSerializer(many=False)
-
+    
     class Meta:
-        model = Comment
-        fields = ('id', 'curator', 'subject', 'content', 'created_on')           
-
+        model = Artist
+        fields = ('id', 'name', 'birth', 'death', 'bio', 'nationality', 'dateEntered', 'curator', 'image')    
+        
         
 class ArtSerializer(serializers.ModelSerializer):
     
     curator = ArtCuratorSerializer(many=False)
-    category = CategorySerializer(many=False)
-    comments = CommentSerializer(many=True)
+    artist = ArtistSerializer(many=False)
 
     class Meta:
         model = Art
-        fields = ('id', 'curator', 'title', 'content', 'publication_date', 'category', 'image_url', 'approved', 'comments', 'classifications' )
+        fields = ('id', 'curator', 'title', 'description', 'dateMade', 'artist', 'image', 'dateAcquired', 'dateEntered', 'location', 'dimensions', 'framed', 'signature', 'classification' )
         depth = 1

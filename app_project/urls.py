@@ -19,10 +19,11 @@ from rest_framework import routers
 from django.urls import path
 from django.conf.urls import include
 from django.conf.urls.static import static
-from app_api.views import register_user, login_user, ArtistView, UserView, ClassificationView, GenreView, StyleView, MediumView
+from app_api.views import register_user, login_user, ArtistView, UserView, ClassificationView, GenreView, StyleView, MediumView, ArtView
 
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'artists', ArtistView, 'artist')
+router.register(r'art', ArtView, 'art')
 router.register(r'users', UserView, 'user')
 router.register(r'classifications', ClassificationView, 'classification')
 router.register(r'genres', GenreView, 'genre')

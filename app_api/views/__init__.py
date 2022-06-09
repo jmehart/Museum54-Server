@@ -6,3 +6,4 @@ from .classification_view import ClassificationView
 from .genre_view import GenreView
 from .style_view import StyleView
 from .medium_view import MediumView
+from .art_view import ArtView

@@ -15,7 +15,7 @@ class Art(models.Model):
     curator = models.ForeignKey("curator", on_delete=models.CASCADE)
     location = models.CharField(max_length=30)
     dimensions = models.CharField(max_length=60)
-    classification = models.ManyToManyField(Classification, related_name="classification", default=None)
+    classification = models.ManyToManyField(Classification, related_name="artclassification")
     style = models.ManyToManyField(Style, related_name="styles", default=None)
     genre = models.ManyToManyField(Genre, related_name="genres", default=None)
     medium = models.ManyToManyField(Medium, related_name="mediums", default=None)
