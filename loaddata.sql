@@ -4,3 +4,5 @@ DELETE FROM auth_user;
 UPDATE authtoken_token
 SET user_id = 1
 WHERE user_id = 2
+
+DROP TABLE app_api_style;

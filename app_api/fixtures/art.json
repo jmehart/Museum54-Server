@@ -4,7 +4,7 @@
         "pk": 1,
         "fields": {
             "title": "Steve",
-            "artistId": 1,
+            "artist": 1,
             "description": "Steve in the fires of Mordor while watching you try to map through an object. A think piece.",
             "dateMade": "March 2022",
             "dateAcquired": "June 2022",
@@ -22,7 +22,7 @@
         "pk": 2,
         "fields": {
             "title": "Disapproving Mac",
-            "artistId": 1,
+            "artist": 1,
             "description": "An ancient symbol of wisdom.",
             "dateMade": "April 2022",
             "dateAcquired": "June 2022",

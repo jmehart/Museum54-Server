@@ -7,7 +7,7 @@ from .medium import Medium
 
 class Art(models.Model):
     title = models.CharField(max_length=60)
-    artistId = models.ForeignKey(Artist, on_delete=models.CASCADE, related_name="artists", default=None)
+    artist = models.ForeignKey(Artist, on_delete=models.CASCADE, related_name="artists", default=None)
     description = models.TextField(null=True)
     dateMade = models.CharField(max_length=30)
     dateAcquired = models.CharField(max_length=30)
@@ -15,10 +15,10 @@ class Art(models.Model):
     curator = models.ForeignKey("curator", on_delete=models.CASCADE)
     location = models.CharField(max_length=30)
     dimensions = models.CharField(max_length=60)
-    classificationId = models.ManyToManyField(Classification, related_name="classification", default=None)
-    styleId = models.ManyToManyField(Style, related_name="styles", default=None)
-    genreId = models.ManyToManyField(Genre, related_name="genres", default=None)
-    mediumId = models.ManyToManyField(Medium, related_name="mediums", default=None)
+    classification = models.ManyToManyField(Classification, related_name="classification", default=None)
+    style = models.ManyToManyField(Style, related_name="styles", default=None)
+    genre = models.ManyToManyField(Genre, related_name="genres", default=None)
+    medium = models.ManyToManyField(Medium, related_name="mediums", default=None)
     framed = models.BooleanField(default=False)
     signature = models.BooleanField(default=False)
     image = models.URLField()
