@@ -7,7 +7,7 @@ from .medium import Medium
 
 class Art(models.Model):
     title = models.CharField(max_length=60)
-    artist = models.ForeignKey(Artist, on_delete=models.CASCADE, related_name="artists", default=None)
+    artist = models.ForeignKey(Artist, on_delete=models.CASCADE, related_name="art", default=None)
     description = models.TextField(null=True)
     dateMade = models.CharField(max_length=30)
     dateAcquired = models.CharField(max_length=30)

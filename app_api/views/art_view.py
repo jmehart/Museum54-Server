@@ -19,6 +19,7 @@ class ArtView(ViewSet):
         user_id = self.request.query_params.get("user_id", None)
         artist = self.request.query_params.get("artist", None)
         classification = self.request.query_params.get("classification", None)
+        style = self.request.query_params.get("style", None)
         title = self.request.query_params.get("title", None)
         
 
@@ -28,6 +29,8 @@ class ArtView(ViewSet):
             art = Art.objects.filter(Q(artist = artist)).order_by('-title')
         elif classification != None:
             art = Art.objects.filter(Q(classification = classification)).order_by('-title')
+        elif style != None:
+            art = Art.objects.filter(Q(style = style)).order_by('-title')
         elif title != None:
             art = Art.objects.filter(Q(title__contains = title)).order_by('-title')
         else:   
@@ -79,6 +82,9 @@ class ArtView(ViewSet):
         try:
             art.save()
             art.classification.add(*request.data['classification'])
+            art.style.add(*request.data['style'])
+            art.genre.add(*request.data['genre'])
+            art.medium.add(*request.data['medium'])
             serializer = ArtSerializer(art, context={'request': request})
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         except ValidationError as ex:
@@ -106,6 +112,9 @@ class ArtView(ViewSet):
         
         art.save()
         art.classification.add(*request.data['classification'])
+        art.style.add(*request.data['style'])
+        art.genre.add(*request.data['genre'])
+        art.medium.add(*request.data['medium'])
 
         return Response({}, status=status.HTTP_204_NO_CONTENT)     
         
@@ -141,6 +150,58 @@ class ArtView(ViewSet):
             response_message = Response({'message': 'Classification deleted'}, status=status.HTTP_204_NO_CONTENT)
         
         return response_message
+    
+    @action(methods=['post', 'delete'], detail=True)
+    def style(self, request, pk):
+        """Post and Delete requests to add styles to a artwork"""
+        response_message = ""
+        
+        art = Art.objects.get(pk=pk)
+        style = request.data['style_id']
+        
+        if request.method == "POST":
+            art.style.add(style)
+            response_message = Response({'message': 'Style added'}, status=status.HTTP_201_CREATED)
+        elif request.method == 'DELETE':
+            art.style.remove(style)
+            response_message = Response({'message': 'Style deleted'}, status=status.HTTP_204_NO_CONTENT)
+        
+        return response_message  
+    
+    @action(methods=['post', 'delete'], detail=True)
+    def genre(self, request, pk):
+        """Post and Delete requests to add genres to a artwork"""
+        response_message = ""
+        
+        art = Art.objects.get(pk=pk)
+        genre = request.data['genre_id']
+        
+        if request.method == "POST":
+            art.genre.add(genre)
+            response_message = Response({'message': 'Genre added'}, status=status.HTTP_201_CREATED)
+        elif request.method == 'DELETE':
+            art.genre.remove(genre)
+            response_message = Response({'message': 'Genre deleted'}, status=status.HTTP_204_NO_CONTENT)
+        
+        return response_message      
+    
+    @action(methods=['post', 'delete'], detail=True)
+    def medium(self, request, pk):
+        """Post and Delete requests to add mediums to a artwork"""
+        response_message = ""
+        
+        art = Art.objects.get(pk=pk)
+        medium = request.data['medium_id']
+        
+        if request.method == "POST":
+            art.medium.add(medium)
+            response_message = Response({'message': 'Medium added'}, status=status.HTTP_201_CREATED)
+        elif request.method == 'DELETE':
+            art.medium.remove(medium)
+            response_message = Response({'message': 'Medium deleted'}, status=status.HTTP_204_NO_CONTENT)
+        
+        return response_message  
+
 
 class ArtUserSerializer(serializers.ModelSerializer):
 
@@ -174,5 +235,5 @@ class ArtSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Art
-        fields = ('id', 'curator', 'title', 'description', 'dateMade', 'artist', 'image', 'dateAcquired', 'dateEntered', 'location', 'dimensions', 'framed', 'signature', 'classification' )
+        fields = ('id', 'curator', 'title', 'description', 'dateMade', 'artist', 'image', 'dateAcquired', 'dateEntered', 'location', 'dimensions', 'framed', 'signature', 'classification', 'style', 'genre', 'medium' )
         depth = 1

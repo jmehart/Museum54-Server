@@ -90,7 +90,7 @@ class ArtistSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Artist
-        fields = ('id', 'name', 'birth', 'death', 'bio', 'nationality', 'curator', 'dateEntered', 'image')
+        fields = ('id', 'name', 'birth', 'death', 'bio', 'nationality', 'curator', 'dateEntered', 'image', 'art')
         depth = 1
         
         
