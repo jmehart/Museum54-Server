@@ -55,55 +55,74 @@ class ArtView(ViewSet):
         
         
         
-    # def create(self, request):
+    def create(self, request):
 
-    #     user = Curator.objects.get(user=request.auth.user)
-    #     artist = Artist.objects.get(pk=request.data["artist"])
+        user = Curator.objects.get(user=request.auth.user)
+        artist = Artist.objects.get(pk=request.data["artist"])
 
-    #     art = Art()
-    #     art.curator = user
-    #     art.title = request.data["title"]
-    #     art.artist = artist
-    #     art.content = request.data["content"]
-    #     art.image_url = request.data["image_url"]
-    #     art.approved = request.data["approved"]
+        art = Art()
+        
+        art.curator = user
+        art.title = request.data["title"]
+        art.artist = artist
+        art.description = request.data["description"]
+        art.image = request.data["image"]
+        art.dateMade = request.data["dateMade"]
+        art.dateAcquired = request.data["dateAcquired"]
+        art.dateEntered = request.data["dateEntered"]
+        art.location = request.data["location"]
+        art.dimensions = request.data["dimensions"]
+        art.framed = request.data["framed"]
+        art.signature = request.data["signature"]
         
 
-    #     try:
-    #         art.save()
-    #         art.classifications.add(*request.data['classifications'])
-    #         serializer = ArtSerializer(art, context={'request': request})
-    #         return Response(serializer.data, status=status.HTTP_201_CREATED)
-    #     except ValidationError as ex:
-    #         return Response({'reason': ex.message}, status=status.HTTP_400_BAD_REQUEST)   
+        try:
+            art.save()
+            art.classification.add(*request.data['classification'])
+            serializer = ArtSerializer(art, context={'request': request})
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        except ValidationError as ex:
+            return Response({'reason': ex.message}, status=status.HTTP_400_BAD_REQUEST)   
         
         
-    # def update(self, request, pk=None):
+    def update(self, request, pk=None):
 
         
-    #     artist = Artist.objects.get(pk=request.data["artist"])
+        artist = Artist.objects.get(pk=request.data["artist"])
 
-    #     art = Art.objects.get(pk=pk)
-    #     # art.curator = request.data['curator']
-    #     art.title = request.data["title"]
-    #     art.content = request.data["content"]
-    #     art.artist = artist
-    #     art.image_url = request.data["image_url"]
-    #     art.approved = request.data["approved"]
-    #     art.save()
-    #     art.classifications.add(*request.data['classifications'])
+        art = Art.objects.get(pk=pk)
 
-    #     return Response({}, status=status.HTTP_204_NO_CONTENT)     
+        art.title = request.data["title"]
+        art.description = request.data["description"]
+        art.artist = artist
+        art.image = request.data["image"]
+        art.dateMade = request.data["dateMade"]
+        art.dateAcquired = request.data["dateAcquired"]
+        art.dateEntered = request.data["dateEntered"]
+        art.location = request.data["location"]
+        art.dimensions = request.data["dimensions"]
+        art.framed = request.data["framed"]
+        art.signature = request.data["signature"]
+        
+        art.save()
+        art.classification.add(*request.data['classification'])
+
+        return Response({}, status=status.HTTP_204_NO_CONTENT)     
         
         
     @action(methods=['put'], detail=True)
-    def approve(self,request, pk):
+    def framed(self,request, pk):
         response_message = ""
         
         art = Art.objects.get(pk=pk)
-        art.approved = 1
+        art.framed = 0
         
+    @action(methods=['put'], detail=True)
+    def signature(self,request, pk):
+        response_message = ""
         
+        art = Art.objects.get(pk=pk)
+        art.signature = 0
         
         
     @action(methods=['post', 'delete'], detail=True)
