@@ -1,5 +1,8 @@
 from urllib import response
 from django.contrib.auth.models import User
+import uuid
+import base64
+from django.core.files.base import ContentFile
 from django.core.exceptions import ValidationError
 from django.db.models.functions import Coalesce
 from django.http import HttpResponseServerError
@@ -20,6 +23,8 @@ class ArtView(ViewSet):
         artist = self.request.query_params.get("artist", None)
         classification = self.request.query_params.get("classification", None)
         style = self.request.query_params.get("style", None)
+        genre = self.request.query_params.get("genre", None)
+        medium = self.request.query_params.get("medium", None)
         title = self.request.query_params.get("title", None)
         
 
@@ -31,6 +36,10 @@ class ArtView(ViewSet):
             art = Art.objects.filter(Q(classification = classification)).order_by('-title')
         elif style != None:
             art = Art.objects.filter(Q(style = style)).order_by('-title')
+        elif genre != None:
+            art = Art.objects.filter(Q(genre = genre)).order_by('-title')
+        elif medium != None:
+            art = Art.objects.filter(Q(medium = medium)).order_by('-title')
         elif title != None:
             art = Art.objects.filter(Q(title__contains = title)).order_by('-title')
         else:   
@@ -62,6 +71,11 @@ class ArtView(ViewSet):
 
         user = Curator.objects.get(user=request.auth.user)
         artist = Artist.objects.get(pk=request.data["artist"])
+        
+        format, imgstr = request.data["image"].split(';base64,')
+        ext = format.split('/')[-1]
+        data = ContentFile(base64.b64decode(imgstr), name=f'{request.data["title"]}-{uuid.uuid4()}.{ext}')
+    
 
         art = Art()
         
@@ -69,7 +83,7 @@ class ArtView(ViewSet):
         art.title = request.data["title"]
         art.artist = artist
         art.description = request.data["description"]
-        art.image = request.data["image"]
+        art.image = data
         art.dateMade = request.data["dateMade"]
         art.dateAcquired = request.data["dateAcquired"]
         art.dateEntered = request.data["dateEntered"]
@@ -95,13 +109,17 @@ class ArtView(ViewSet):
 
         
         artist = Artist.objects.get(pk=request.data["artist"])
+        
+        format, imgstr = request.data["image"].split(';base64,')
+        ext = format.split('/')[-1]
+        data = ContentFile(base64.b64decode(imgstr), name=f'{request.data["title"]}-{uuid.uuid4()}.{ext}')
 
         art = Art.objects.get(pk=pk)
 
         art.title = request.data["title"]
         art.description = request.data["description"]
         art.artist = artist
-        art.image = request.data["image"]
+        art.image = data
         art.dateMade = request.data["dateMade"]
         art.dateAcquired = request.data["dateAcquired"]
         art.dateEntered = request.data["dateEntered"]
@@ -124,14 +142,14 @@ class ArtView(ViewSet):
         response_message = ""
         
         art = Art.objects.get(pk=pk)
-        art.framed = 0
+        art.framed = 1
         
     @action(methods=['put'], detail=True)
     def signature(self,request, pk):
         response_message = ""
         
         art = Art.objects.get(pk=pk)
-        art.signature = 0
+        art.signature = 1
         
         
     @action(methods=['post', 'delete'], detail=True)

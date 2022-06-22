@@ -12,4 +12,4 @@ WHERE user_id = 3
 
 
 DELETE FROM app_api_artist
-WHERE id = 6;
+WHERE id = 7;

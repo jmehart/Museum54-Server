@@ -21,4 +21,5 @@ class Art(models.Model):
     medium = models.ManyToManyField(Medium, related_name="mediums", default=None)
     framed = models.BooleanField(default=False)
     signature = models.BooleanField(default=False)
-    image = models.URLField()
+    image = models.ImageField(
+        upload_to='media', default="")
