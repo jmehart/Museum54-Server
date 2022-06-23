@@ -39,7 +39,7 @@ class ArtistView(ViewSet):
         if name != None:
             artists = Artist.objects.filter(Q(name__contains = name)).order_by('-name')
         else:   
-            artists = Artist.objects.all().order_by('name')
+            artists = Artist.objects.all().order_by('-name')
         # What if we wanted to pass in a query string parameter?
         # The request from the method parameters holds all the information for the request from the client. The request.query_params is a dictionary of any query parameters that were in the url. Using the .get method on a dictionary is a safe way to find if a key is present on the dictionary. If the 'type' key is not present on the dictionary it will return None.
         serializer = ArtistSerializer(artists, many=True, context={'request': request})
