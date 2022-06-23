@@ -3,6 +3,10 @@ from django.http import HttpResponseServerError
 from django.core.exceptions import ValidationError
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
+from django.db.models import Q
+import uuid
+import base64
+from django.core.files.base import ContentFile
 from rest_framework import serializers, status
 from django.contrib.auth.models import User
 from app_api.models import Artist, Curator
@@ -29,10 +33,16 @@ class ArtistView(ViewSet):
         Returns:
             Response -- JSON serialized list of artist types
         """
-        artists = Artist.objects.all().order_by('name')
+        
+        name = self.request.query_params.get("name", None)
+        
+        if name != None:
+            artists = Artist.objects.filter(Q(name__contains = name)).order_by('-name')
+        else:   
+            artists = Artist.objects.all().order_by('-name')
         # What if we wanted to pass in a query string parameter?
         # The request from the method parameters holds all the information for the request from the client. The request.query_params is a dictionary of any query parameters that were in the url. Using the .get method on a dictionary is a safe way to find if a key is present on the dictionary. If the 'type' key is not present on the dictionary it will return None.
-        serializer = ArtistSerializer(artists, many=True)
+        serializer = ArtistSerializer(artists, many=True, context={'request': request})
         return Response(serializer.data)
 
     
@@ -43,22 +53,53 @@ class ArtistView(ViewSet):
             Response -- JSON serialized artist instance
         """
         curator = Curator.objects.get(user=request.auth.user)
-        serializer = CreateArtistSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        serializer.save(curator=curator)
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
+        
+        format, imgstr = request.data["image"].split(';base64,')
+        ext = format.split('/')[-1]
+        data = ContentFile(base64.b64decode(imgstr), name=f'{request.data["name"]}-{uuid.uuid4()}.{ext}')
     
+        
+        artist = Artist()
+        
+        artist.curator = curator
+        artist.name = request.data["name"]
+        artist.birth = request.data["birth"]
+        artist.death = request.data["death"]
+        artist.bio = request.data["bio"]
+        artist.nationality = request.data["nationality"]
+        artist.dateEntered = request.data["dateEntered"]
+        artist.image = data
+        
+
+        try:
+            artist.save()
+            serializer = ArtistSerializer(artist, context={'request': request})
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        except ValidationError as ex:
+            return Response({'reason': ex.message}, status=status.HTTP_400_BAD_REQUEST)   
+        
 
     def update(self, request, pk):
         """Handle PUT requests for a artist
         Returns:
             Response -- Empty body with 204 status code
         """
+        
+        format, imgstr = request.data["image"].split(';base64,')
+        ext = format.split('/')[-1]
+        data = ContentFile(base64.b64decode(imgstr), name=f'{request.data["name"]}-{uuid.uuid4()}.{ext}')
+
         artist = Artist.objects.get(pk=pk)
-        serializer = CreateArtistSerializer(artist, data=request.data)
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
-        return Response(None, status=status.HTTP_204_NO_CONTENT)
+
+        artist.name = request.data["name"]
+        artist.birth = request.data["birth"]
+        artist.death = request.data["death"]
+        artist.bio = request.data["bio"]
+        artist.nationality = request.data["nationality"]
+        artist.dateEntered = request.data["dateEntered"]
+        artist.image = data
+        
+        artist.save()
     
     
     def destroy(self, request, pk):

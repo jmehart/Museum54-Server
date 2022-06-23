@@ -8,4 +8,5 @@ class Artist(models.Model):
     nationality = models.CharField(max_length=30)
     dateEntered = models.DateTimeField(auto_now_add=True)
     curator = models.ForeignKey("curator", on_delete=models.CASCADE)
-    image = models.URLField()
+    image = models.ImageField(
+        upload_to='media', default="")
