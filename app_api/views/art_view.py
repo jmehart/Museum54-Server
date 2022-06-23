@@ -109,17 +109,19 @@ class ArtView(ViewSet):
 
         
         artist = Artist.objects.get(pk=request.data["artist"])
-        
-        format, imgstr = request.data["image"].split(';base64,')
-        ext = format.split('/')[-1]
-        data = ContentFile(base64.b64decode(imgstr), name=f'{request.data["title"]}-{uuid.uuid4()}.{ext}')
-
         art = Art.objects.get(pk=pk)
-
+        try:
+            format, imgstr = request.data["image"].split(';base64,')
+            ext = format.split('/')[-1]
+            data = ContentFile(base64.b64decode(imgstr), name=f'{request.data["title"]}-{uuid.uuid4()}.{ext}')
+            art.image = data
+        
+        except ValueError:
+            pass
         art.title = request.data["title"]
         art.description = request.data["description"]
         art.artist = artist
-        art.image = data
+        
         art.dateMade = request.data["dateMade"]
         art.dateAcquired = request.data["dateAcquired"]
         art.dateEntered = request.data["dateEntered"]
