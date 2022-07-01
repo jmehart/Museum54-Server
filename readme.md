@@ -1,6 +1,6 @@
 <!-- TODO: UPDATE THE README -->
 # Museum54
-- Client: (https://github.com/jmehart/Museum54-Client/blob/main/README.md)
+- Client: https://github.com/jmehart/Museum54-Client
 
 ## PROBLEM SOLVED
 - This application helps museum curators keep track of the data that follows museum art and artifacts. With extensive sensitive data to keep track of, it’s crucial that museums have the ability to enter correct information into a database and also access that information when handling art. This app also offers a visually appealing front-end display to enter forms and view art in the collection, because even a museum’s database should look pretty.
